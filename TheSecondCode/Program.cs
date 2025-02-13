@@ -1,10 +1,11 @@
-﻿namespace TheSecondCode
+﻿using System.ComponentModel.Design;
+
+namespace TheSecondCode
 {
-    internal class Program
+    public class Logic
     {
-        static void Main(string[] args)
+        public static bool check(int smth)
         {
-            var smth = 124345;
             string str = smth.ToString();
             bool forif = true;
             for (int i = 1; i < str.Length; i++)
@@ -19,14 +20,33 @@
                     break;
                 }
             }
-            if (forif)
+            return forif;
+        }
+
+        public static string Message(int smth)
+        {
+            string message = "";
+
+            if (Logic.check(smth))
             {
-                Console.WriteLine("Последовательность: " + str + " положительна!");
+                message = "Последовательность: " + smth + " положительна!";
             }
             else
             {
-                Console.WriteLine("Последовательность: " + str + " отрицательна!");
+                message = "Последовательность: " + smth + " отрицательна!";
             }
+            return message;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var smth = 12345;
+
+            string message = Logic.Message(smth);
+            
+            Console.WriteLine(message);
         }
     }
 }
