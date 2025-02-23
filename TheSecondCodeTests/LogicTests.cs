@@ -12,9 +12,29 @@ namespace TheSecondCode.Tests
     public class LogicTests
     {
         [TestMethod()]
-        public void PositiveResultTest()
+        public void TrueResultTestCheck()
         {
-            var smth = 12345;
+            string smth = "3459";
+
+            bool message = Logic.Check(smth);
+
+            Assert.AreEqual(true, message);
+        }
+
+        [TestMethod()]
+        public void FalseResultTestCheck()
+        {
+            string smth = "6743";
+
+            bool message = Logic.Check(smth);
+
+            Assert.AreEqual(false, message);
+        }
+
+        [TestMethod()]
+        public void PositiveResultTestMessage()
+        {
+            string smth = "12345";
 
             string message = Logic.Message(smth);
 
@@ -22,13 +42,23 @@ namespace TheSecondCode.Tests
         }
 
         [TestMethod()]
-        public void NegativeResultTest()
+        public void NegativeResultTestMessage()
         {
-            var smth = 1423845;
+            string smth = "1423845";
 
             string message = Logic.Message(smth);
 
             Assert.AreEqual("Последовательность: " + smth + " отрицательна!", message);
+        }
+
+        [TestMethod()]
+        public void UndigitResultTestIsDigitMessage()
+        {
+            string smth = "WTF";
+
+            string message = Logic.IsDigitMessage(smth);
+
+            Assert.AreEqual("Введённая строка не являются цифрой", message);
         }
     }
 }
